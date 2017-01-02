@@ -4,6 +4,9 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
+  #in production, set the default Devise location
+  config.action_mailer.default_url_options = { host: 'https://quiet-lake-36140.herokuapp.com/', port: 3000 }
+
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
