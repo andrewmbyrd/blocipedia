@@ -1,0 +1,28 @@
+// Place all the styles related to the Wikis controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.form-group .checkbox{
+  display: inline;
+}
+
+h1.wiki-title{
+  text-align: center;
+}
+
+.editing{
+  position: relative;
+
+}
+
+.destroying{
+  position: relative;
+  float: right;
+
+}
+
+.new-wiki{
+  position: relative;
+  left: 200px;
+  bottom: 43px;
+
+}
