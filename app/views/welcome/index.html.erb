@@ -14,10 +14,11 @@
   <%end%>
 </div>
 
+<% if (!user_signed_in?) %>
 <div class="row">
   <div class="col-md-6">
     <p class="lead">Create as many public wikis as you want!</p>
-    <%= link_to "Free Plan", root_path, class: 'btn btn-success' %>
+    <%= link_to "Free Plan", new_user_registration_path, class: 'btn btn-success' %>
   </div>
 
   <div class="col-md-6">
@@ -25,3 +26,13 @@
     <%= link_to "Premium Plan", root_path, class: 'btn btn-success' %>
   </div>
 </div>
+
+<% else %>
+<div class="row">
+  <div class="premium">
+    <p class="lead">Upgrade to Premium</p>
+    <%= link_to "Upgrade NOW", root_path, class: 'btn btn-success' %>
+  </div>
+</div>
+
+<% end %>

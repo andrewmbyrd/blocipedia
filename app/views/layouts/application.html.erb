@@ -11,8 +11,8 @@
   <body>
     <div class="container">
       <div class="nav nav-tabs">
-        <%= link_to image_tag("wikipedia.png", :border =>0), wikis_path%>
-
+        <%= link_to image_tag("wikipedia.png", :border =>0), root_path%>
+        <%= link_to "Wiki List", wikis_path %>
 
         <div class="pull-right user-info">
         <% if user_signed_in? %>

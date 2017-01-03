@@ -21,7 +21,11 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+#this gem suggested by the Bloc course will handle user sign in
 gem 'devise'
+
+#this gem handles different levels of authorization
+gem 'pundit'
 
 gem 'figaro'
 # Use jquery as the JavaScript library

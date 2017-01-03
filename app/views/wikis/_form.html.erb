@@ -4,11 +4,14 @@
 
   <%= f.label :body %>
   <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: 'Enter the body of the wiki' %>
-
   <div class="form-group">
     <%= f.label :private, class: 'checkbox' %>
-    <%= f.check_box :private %> Only if you've paid!! :D
+    <%= f.check_box :private %> (You can make this private. Perks of membership :D)
+
   </div>
+
+
+
 
 
   <%= f.submit "Save", class: 'btn btn-success'%>

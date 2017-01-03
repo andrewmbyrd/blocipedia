@@ -7,9 +7,13 @@ RSpec.describe WikisController, type: :controller do
 
   let(:my_wiki) {user.wikis.create!(title: title, body: body, private: false)}
 
+  before(:each) do
+    sign_in user
+  end
+
   describe "GET #show" do
     it "returns http success" do
-      get :show, id: my_wiki.id
+      get :show, params: { id: my_wiki.id }
       expect(response).to have_http_status(:success)
     end
   end
@@ -23,13 +27,13 @@ RSpec.describe WikisController, type: :controller do
 
   describe "POST #create" do
     it "increases number of posts by 1" do
-      expect{post :create, user: user, wiki: {title: RandomData.random_sentence, body: RandomData.random_paragraph, private: false}}.to change(Wiki,:count).by(1)
+      expect{post :create, params: { user: user, wiki: {title: RandomData.random_sentence, body: RandomData.random_paragraph, private: false } }}.to change(Wiki,:count).by(1)
     end
   end
 
   describe "GET #edit" do
     it "returns http success" do
-      get :edit, id: my_wiki.id
+      get :edit, params: { id: my_wiki.id }
       expect(response).to have_http_status(:success)
     end
   end
@@ -40,7 +44,7 @@ RSpec.describe WikisController, type: :controller do
        new_title = RandomData.random_sentence
        new_body = RandomData.random_paragraph
 
-       put :update,  id: my_wiki.id, wiki: {title: new_title, body: new_body, private: false}
+       put :update,  params: { id: my_wiki.id, wiki: {title: new_title, body: new_body, private: false} }
 
 
        updated_wiki = assigns(:wiki)
@@ -53,7 +57,7 @@ RSpec.describe WikisController, type: :controller do
 
   describe "DELETE #destroy" do
     it "deletes the post" do
-       delete :destroy,  id: my_wiki.id
+       delete :destroy,  params: { id: my_wiki.id }
 
        count = Wiki.where({id: my_wiki.id}).size
        expect(count).to eq 0
