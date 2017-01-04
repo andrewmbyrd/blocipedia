@@ -8,7 +8,7 @@
 require 'random_data'
 require 'faker'
 
-20.times do
+5.times do
   User.create!(
   email: Faker::Internet.email,
   password: Faker::Name.name
@@ -17,7 +17,7 @@ end
 
 users = User.all
 
-15.times do
+30.times do
   Wiki.create!(
   title: Faker::Superhero.name,
   body: Faker::ChuckNorris.fact,

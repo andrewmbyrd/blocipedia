@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   before_save {self.email = email.downcase}
-  after_initialize { self.role = :standard }
+  before_create { self.role = :standard }
 
   enum role: [:standard, :admin, :premium]
 

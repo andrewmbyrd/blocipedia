@@ -1,0 +1,18 @@
+<div class="jumbotron">
+  <h1> Premium Membership </h1>
+  <h3> Your ticket to collaboration heaven </h3>
+</div>
+
+<div class="center">
+  <p class="lead">With premium membership, you'll have access to</p>
+  <ul class="perks">
+    <li> Private wikis - create and edit wikis only accessible to whom you choose </li>
+    <li> Collaboration - grant access to your choice friends to help build the wikis of a lifetime </li>
+    <li> umm.. I think that's pretty much it right now but we may make more stuff!</li>
+  </ul>
+
+  <p> This is your chance to do something big. Confirm your payment of $15 below to go premium</p>
+
+  <%=button_to "Make Me Premium", upgrade_path, method: :put, class: "btn btn-success" %>
+  <%= link_to "Back", :back %>
+</div>
