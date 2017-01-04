@@ -24,6 +24,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #GET /resource/premium
   def premium
     @user = current_user
+    @stripe_btn_data = {
+      key: "#{ Rails.configuration.stripe[:publishable_key] }",
+      description: "BigMoney Membership - #{current_user.email}",
+      amount: 15_00
+    }
   end
 
   def upgrade

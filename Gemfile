@@ -21,6 +21,7 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'stripe'
 #this gem suggested by the Bloc course will handle user sign in
 gem 'devise'
 

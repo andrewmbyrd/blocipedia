@@ -12,11 +12,12 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get "premium", to: "users/registrations#premium", as: "premium_registration"
-    put "upgrade", to: "users/registrations#upgrade", as: "upgrade"
     get "standard", to: "users/registrations#standard", as: "standard_reverting"
     put "downgrade", to: "users/registrations#downgrade", as: "downgrade"
   end
   resources :wikis
+
+  resources :charges, only: :create
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

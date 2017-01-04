@@ -13,6 +13,11 @@
 
   <p> This is your chance to do something big. Confirm your payment of $15 below to go premium</p>
 
-  <%=button_to "Make Me Premium", upgrade_path, method: :put, class: "btn btn-success" %>
+
+  <%= form_tag charges_path do %>
+     <h4>Click the button!</h4>
+     <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>" ></script>
+   <% end %>
+
   <%= link_to "Back", :back %>
 </div>
