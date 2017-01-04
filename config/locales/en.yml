@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+  pundit:
+   default: 'You cannot perform this action.'
+   wiki_policy:
+     update?: 'You cannot edit this wiki because its private! Upgrade!'
+     destroy?: 'You cannot destroy this wiki! must be an admin!'

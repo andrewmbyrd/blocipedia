@@ -3,15 +3,15 @@ class WikiPolicy < ApplicationPolicy
 
   def initialize(user, wiki)
     @user = user
-    @Wiki = wiki
+    @wiki = wiki
   end
 
   def update?
-    user.present?#||!(params[:wiki][:private])
+    wiki.user == user || (!wiki.private? && user.present?)
   end
 
   def destroy?
-    user.admin? 
+    user.admin?
   end
 
   class Scope < Scope

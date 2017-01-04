@@ -52,6 +52,7 @@ class WikisController < ApplicationController
     #isolate the wiki we want to update
     @wiki = Wiki.find(params[:id])
 
+
     #this is using Pundit to verify that the current_user has permisions
     authorize @wiki
 
@@ -77,8 +78,9 @@ class WikisController < ApplicationController
   end
 
   private
-  def user_not_authorized
-    flash[:alert] = "You are not authorized to change this wiki. Consider upgrading to our premium plan :)"
+  def user_not_authorized(exception)
+    policy_name = exception.policy.class.to_s.underscore
+    flash[:alert] = t "#{policy_name}.#{exception.query}", scope: "pundit", default: :default
     redirect_to wikis_path
   end
 #end the controller
