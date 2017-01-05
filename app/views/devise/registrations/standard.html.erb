@@ -5,11 +5,11 @@
 
 <div class="center">
   <p class="lead">Are you sure you want to go? No hard feelings, but give it one last thought!</p>
+  <p> I mean really there's no reason to do this. We already charged your account the one-time fee to upgrade. AND NO REFUNDS </p>
 
+  <p> Click below to revert to standard membership. You'll still have access to all public wikis, but your wikis will no longer be private.</p>
 
-  <p> Click below to revert to standard membership. You'll still have access to all public wikis, but you'll lose private wikis and collaboration tools.</p>
-
-  <%=button_to "Take me back to Standard", downgrade_path, method: :put, class: "btn btn-danger" %>
+  <%=button_to "Take me back to Standard", downgrade_path, method: :put, class: "btn btn-danger", data: {confirm: "Final chance. If you continue, all of your private wikis are going to become public for the world to see!"} %>
   </br>
   <%= link_to "Back", :back, class: "btn btn-success" %>
 </div>

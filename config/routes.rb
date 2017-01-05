@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get "premium", to: "users/registrations#premium", as: "premium_registration"
     get "standard", to: "users/registrations#standard", as: "standard_reverting"
     put "downgrade", to: "users/registrations#downgrade", as: "downgrade"
+    
   end
   resources :wikis
 

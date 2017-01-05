@@ -31,22 +31,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
     }
   end
 
-  def upgrade
-    if current_user.premium!
-      redirect_to root_path, notice: "Congratulations! You are now a premium member"
-    else
-      flash.now[:alert] = "that didn't work"
-      render :premium
-    end
-  end
 
   def standard
     @user = current_user
   end
 
+
   def downgrade
+
     if current_user.standard!
-      redirect_to root_path, notice: "Membership status reset to standard. Please, feel FREE to browse our public wikis"
+      current_user.wikis.each do |wiki|
+        wiki.private = false
+        wiki.save
+      end
+
+      redirect_to root_path, alert: "Membership status reset to standard. Please, feel FREE to browse our public wikis"
     else
       flash.now[:alert] = "that didn't work. Call us and we'll fix it!"
       render :standard
@@ -88,4 +87,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
 end

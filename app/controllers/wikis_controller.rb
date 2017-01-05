@@ -42,7 +42,7 @@ class WikisController < ApplicationController
       flash[:notice] = 'This wiki was successfully deleted'
       redirect_to action: :index
     else
-      flash[:notice] = "There was an error deleting this wiki"
+      flash[:alert] = "There was an error deleting this wiki"
       render :show
     end
 
