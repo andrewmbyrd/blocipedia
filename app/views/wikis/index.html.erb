@@ -6,7 +6,7 @@
       <div class="media">
         <div class="media-body">
               <h4 class="media-heading"><%=link_to wiki.title, wiki_path(wiki.id) %></h4>
-              <small><%= wiki.body %></small>
+              <small><%= markdown(wiki.body) %></small>
           </div>
         </div>
 

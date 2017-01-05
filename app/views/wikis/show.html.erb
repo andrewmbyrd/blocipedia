@@ -7,4 +7,4 @@
 <% end %>
 
 <h1 class="wiki-title"><%= @wiki.title %></h1>
-<%= @wiki.body %>
+<%= markdown(@wiki.body) %>

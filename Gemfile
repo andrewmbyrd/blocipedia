@@ -25,6 +25,8 @@ gem 'stripe'
 #this gem suggested by the Bloc course will handle user sign in
 gem 'devise'
 
+#allows us to use markdown in our wiki editing
+gem 'redcarpet', '~>3.0.0'
 #this gem handles different levels of authorization
 gem 'pundit'
 
