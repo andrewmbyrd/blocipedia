@@ -13,11 +13,11 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
-    
+
   end
 
   def edit
-
+    
     @wiki = Wiki.find(params[:id])
   end
 

@@ -28,3 +28,55 @@ h1.wiki-title{
   bottom: 43px;
 
 }
+p.table{
+  text-align: center;
+}
+.middle{
+  text-align: center;
+}
+.collab tr{
+  border: 1px solid black;
+}
+
+.collab {
+  margin: 0 auto;
+  width: 75%;
+  border: 2px solid black;
+}
+
+.collab th{
+  border: 1px solid black;
+  border-bottom: 2px solid black;
+  text-align: center;
+  width: 33%;
+}
+
+.select{
+  text-align: center;
+}
+
+td.email{
+  padding-left: 5px;
+  border-right: 1px solid black;
+  text-align: left;
+}
+
+.membership{
+  border-right: 1px solid black;
+  text-align: center;
+
+}
+
+tr:nth-child(even){
+  background: lightblue;
+
+}
+.spacer{
+  height: 200px;
+}
+
+.unlinked{
+  text-decoration: none;
+  color: black;
+  font-size: 1.5em;
+}

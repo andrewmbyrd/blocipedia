@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :wikis
+  has_many :collaborators, through: :wikis
   attr_accessor :standard, :admin, :premium
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

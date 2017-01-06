@@ -1,3 +1,35 @@
 <h1> Update the wiki as desired. Please only use factual information. </h1>
-
+<p class="table"><a href="#collaborate"> You can add collaborators using the menu below</a></p>
 <%= render partial: 'form', locals: { wiki: @wiki }%>
+<div class="spacer">
+</div>
+
+  <a id="collaborate"><p class="table unlinked">Update Collaborators</p></a>
+
+
+  <div class="middle">
+
+  <%= form_tag collaborators_create_path, method: :post do %>
+    <table class="collab">
+      <tr>
+        <th>User email</th>
+        <th>Membership Status</th>
+        <th>Allow as Collaborator</th>
+      </tr>
+
+      <% User.all.each do |user| %>
+      <tr>
+        <td class="email"><%=user.email%></td>
+        <td class="membership"><%=user.role.capitalize%></td>
+
+        <td class="select"><%= check_box_tag "user_ids[]", user.id, @wiki.collaborators.pluck(:email).include?(user.email) %></td>
+      </tr>
+      <% end %>
+      <%= hidden_field_tag "wiki_id", @wiki.id %>
+    </table>
+    <br/>
+    <%= submit_tag "Update Collaborators for this wiki" %>
+  <% end %>
+
+
+  </div>
