@@ -1,0 +1,25 @@
+%h1.title Blocipedia: Social Learning
+%h3.support Markdown wikis for everyone
+
+.jumbotron
+  - if !(user_signed_in?)
+    .sign-up
+      %p Create an account to build, edit, and share Markdown Wikis
+      .col-md-16
+        = link_to "Sign Up", new_user_registration_path, class: 'btn btn-success'
+
+  -else
+    =link_to "Click to get started viewing our wikis!", wikis_path
+
+
+
+
+-unless (current_user.premium?)
+  .row
+    .premium
+      %p.lead Upgrade to Premium
+      = link_to "Upgrade NOW", premium_registration_path, class: 'btn btn-success'
+
+
+-else
+  %h4.premium You've got premium power! Go forth and wiki it up!

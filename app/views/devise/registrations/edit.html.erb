@@ -1,0 +1,65 @@
+<h2 class="edit">Edit <%= resource_name.to_s.humanize %></h2>
+<div class="pull-right">
+<% unless (current_user.premium?) %>
+  <h3 class="status">Love Blocipedia?</h3>
+  <h4><i>Go Premium</i></h4>
+  <%= link_to "Learn more", premium_registration_path, class: "btn btn-success" %>
+
+<% else %>
+
+
+    <h3 class="status"> You hate it don't you :( </h3>
+    <h4> <i>Click here to downgrade your account</i> </h4>
+    <%= link_to "Downgrade", standard_reverting_path, class: "btn btn-danger" %>
+
+
+<% end %>
+
+
+</div>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+    <br />
+    <div class="field">
+      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.password_field :current_password, autocomplete: "off" %>
+    </div>
+    <br />
+    <div class="field">
+      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+      <% if @minimum_password_length %>
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </div>
+    <br />
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+
+    <br />
+
+    <div class="actions">
+      <%= f.submit "Update" %>
+    </div>
+  <% end %>
+
+
+
+<div class="bottom">
+<h3>Cancel my account</h3>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>
+</div>

@@ -1,0 +1,35 @@
+%h1 Update the wiki as desired. Please only use factual information.
+%p.table
+  %a{href: "#collaborate"} You can add collaborators using the menu below
+= render partial: 'form', locals: { wiki: @wiki }
+
+.spacer
+
+
+- if @wiki.user == current_user && (current_user.premium? || current_user.admin?)
+  %a{id: "collaborate"}
+    %p.table.unlinked Update Collaborators
+
+
+  .middle
+
+    = form_tag collaborators_create_path, method: :post do
+      %table.collab
+        %tr
+          %th User email
+          %th Membership Status
+          %th Allow as Collaborator
+
+
+        - User.all.each do |user|
+          %tr
+            %td.email
+              =user.email
+            %td.membership
+              =user.role.capitalize
+            %td.select
+              = check_box_tag "user_ids[]", user.id, @wiki.collaborators.pluck(:email).include?(user.email)
+            = hidden_field_tag "wiki_id", @wiki.id
+      %br
+      = submit_tag "Update Collaborators for this wiki"
+%br

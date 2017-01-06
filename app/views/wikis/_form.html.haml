@@ -1,0 +1,16 @@
+= form_for @wiki do |f|
+  = f.label :title
+  = f.text_field :title, class: 'form-control', placeholder: 'Enter Wiki title'
+
+  = f.label :body
+  = f.text_area :body, rows: 8, class: 'form-control', placeholder: 'Enter the body of the wiki'
+  - if (current_user.premium? && (current_user == @wiki.user || @wiki.user == nil)) || current_user.admin?
+    .form-group
+      = f.label :private, class: 'checkbox'
+      = f.check_box :private
+      %p (You can make this private. Perks of membership :D)
+  -else
+    %br
+
+
+  = f.submit "Save", class: 'btn btn-success'
