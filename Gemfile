@@ -29,6 +29,8 @@ gem 'devise'
 gem 'redcarpet', '~>3.0.0'
 #this gem handles different levels of authorization
 gem 'pundit'
+#lets us use different markup for our html files
+gem 'haml'
 
 gem 'figaro'
 # Use jquery as the JavaScript library
