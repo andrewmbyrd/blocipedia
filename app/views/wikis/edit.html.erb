@@ -4,6 +4,7 @@
 <div class="spacer">
 </div>
 
+<% if @wiki.user == current_user && (current_user.premium? || current_user.admin?) %>
   <a id="collaborate"><p class="table unlinked">Update Collaborators</p></a>
 
 
@@ -31,5 +32,8 @@
     <%= submit_tag "Update Collaborators for this wiki" %>
   <% end %>
 
-
+  <br />
+  
   </div>
+
+  <% end %>
