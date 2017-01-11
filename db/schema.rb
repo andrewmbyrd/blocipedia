@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170105214737) do
+ActiveRecord::Schema.define(version: 20170111200031) do
+
+  create_table "collaborated_wikis", force: :cascade do |t|
+    t.integer  "wiki_id"
+    t.integer  "collaborator_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "user_id"
+    t.index ["collaborator_id"], name: "index_collaborated_wikis_on_collaborator_id"
+    t.index ["user_id"], name: "index_collaborated_wikis_on_user_id"
+    t.index ["wiki_id", "collaborator_id"], name: "index_collaborated_wikis_on_wiki_id_and_collaborator_id", unique: true
+    t.index ["wiki_id"], name: "index_collaborated_wikis_on_wiki_id"
+  end
 
   create_table "collaborators", force: :cascade do |t|
     t.string   "email"
@@ -18,7 +30,6 @@ ActiveRecord::Schema.define(version: 20170105214737) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["wiki_id"], name: "index_collaborators_on_wiki_id"
-    
   end
 
   create_table "users", force: :cascade do |t|
