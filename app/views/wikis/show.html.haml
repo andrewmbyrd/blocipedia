@@ -1,0 +1,11 @@
+- if policy(@wiki).update?
+  =link_to "Edit Wiki", edit_wiki_path(@wiki.id), class: "btn btn-success editing"
+
+
+- if policy(@wiki).destroy?
+  =link_to "Delete Wiki", @wiki, method: :delete, class: "btn btn-danger destroying", data: { confirm: "Are you sure you want to delete this entire wiki?"}
+
+
+%h1.wiki-title
+  = @wiki.title
+= markdown(@wiki.body) 
